@@ -1,0 +1,518 @@
+
+            @font-face {
+    font-family: 'Poppins';
+    src: url('media/Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 200; /* SemiBold */
+    font-style: normal;
+    }
+    
+    @font-face {
+    font-family: 'Poppins';
+    src: url('media/Poppins-Medium.ttf') format('truetype');
+    font-weight: 400; /* SemiBold */
+    font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'Poppins';
+    src: url('media/Poppins-Lightitalic.ttf') format('truetype');
+    font-weight: 400; /* Light */
+    font-style: italic;
+    }
+        * {
+            font-family: 'Poppins',bold;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        /* Entête */
+        header {
+            position: fixed;
+            text-align: center;
+            padding: 4px;
+            border-bottom: 6px solid #ffaa1c;
+            background-color: #4b0082;
+            color: white;
+            width: 100%;
+            height: 70px;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+          
+        }
+
+        header h1 {
+            position: fixed;
+            font-size: 1.75rem;
+            margin: 0;
+            right: 2%;
+        }
+
+        header p {
+            position: fixed;
+            right: 2%;
+            font-size: 0.70rem;
+            margin-top: 38px;
+            font-style: italic;
+        }
+        body {
+            display: flex;
+            flex-direction: column; /* Pour aligner header, clock et digital-clock */
+            align-items: center;
+            margin-bottom: 1% ;
+            background-color: #e6e6fa;
+            margin: 0;
+            padding-top: -39px;
+        }
+
+
+
+    .burger-menu {
+        font-size: 30px;
+        position: absolute;
+        top: 10px;
+        left: 20px;
+        cursor: pointer;
+    }
+
+    .menu {
+        position: fixed;
+        z-index: 1200;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #4b008290;
+        font-weight: bold;
+        backdrop-filter: blur(10px); /* Applique un flou de 10 pixels */
+        -webkit-backdrop-filter: blur(5px); /* Compatibilité avec Safari */
+        transition: right 0.3s ease;
+    }
+
+
+    .menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 30%;
+    }
+
+    .menu ul li {
+        padding: 4px;
+        margin-bottom: 12px;
+        margin-left: 55px;
+        font-size: 17px;
+        border: 2px solid #fff;
+        background-color: #ffaa1c;
+        width: 50%;
+        border-radius: 20px;
+        height: auto;
+        text-align: center;
+        text-decoration:none;
+        
+    }
+
+    .menu ul li a {
+        color: #fff;
+        text-decoration:none;
+    }
+
+    .menu.open {
+        right: 0;
+    }
+    
+    .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Centrer le tout */
+    align-items: center;
+    flex-wrap: wrap; /* Permet aux éléments de s'adapter en mobile */
+}
+
+.group {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Espacement entre digital-clock et country-times-menu */
+}
+
+/* Mobile : en ligne normale */
+@media (max-width: 767px) {
+    .container {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .group {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* Ordinateur : clock à droite, les autres à gauche */
+@media (min-width: 768px) {
+    .container {
+        justify-content: space-between; /* Équilibrer l'espace */
+    }
+
+    #clock {
+        order: 2; /* Clock passe à droite */
+    }
+
+    .group {
+        order: 1; /* digital-clock et country-times-menu restent à gauche */
+    }
+}
+
+        .clock {
+            position: relative;
+            width: 80vw;
+            max-width: 270px;
+            height: 80vw;
+            max-height: 270px;
+            border: 22px solid #4b0082;
+            border-radius: 50%;
+            background-image: url('media/tiwon.png');
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 1);
+            margin-bottom: 6vh; 
+            background-color: #ffaa1c35;
+            background-size: cover;
+            background-position: center;
+            margin-top: 18vh; /* Pour éviter le chevauchement avec le header */
+        }
+        .hand {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background-color: #333;
+            top: 49.5%;
+            transform-origin: 100%;
+            transform: rotate(90deg);
+            transition: transform 0.5s cubic-bezier(0.4, 2.3, 0.6, 1);
+        }
+          #landscape-warning {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 10px;
+    z-index: 9999;
+}
+
+@media (max-width: 767.98px) and (orientation: landscape) {
+    #landscape-warning {
+        display: block;
+    }
+}
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .clock, 
+    .digital-clock, 
+    .country-time-menu { 
+        display: none !important; 
+    }
+}
+        
+.mark.major {
+    transform-origin: 50% 133px;
+    width: 3px; /* Plus épais pour les pas de 5 minutes */
+    height: 15px; /* Plus long */
+    background-color: #fff; /* Même couleur ou une autre */
+}
+
+        .hour-hand {
+            height: 5px;
+            width: 40%;
+            top: 49.5%;
+            left: 10%;
+            border-radius: 15px;
+            background-color: #000;
+        }
+
+        .minute-hand {
+            height: 2.5px;
+            width: 48%;
+            top: 49.5%;
+            left: 2.6%;   
+            border-radius: 17px;
+            background-color: #250fb2;
+        }
+
+        .second-hand {
+            display: none;
+            height: 1.5px;
+            background-color: #f00;
+            border-radius: 15px;
+            transition: transform 0.2s cubic-bezier(0.4, 2.3, 0.6, 1);
+        }
+
+        .center-circle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #000;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .number {
+            position: absolute;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000;
+            transform: translate(-50%, -50%);
+        }
+        
+           .mark {
+            position: absolute;
+            width: 1.5px;
+            height: 8px;
+            background-color: #ffaa1c;
+            top: -8.5%;
+            left: 49.5%;
+            transform-origin: 50% 133px;
+        }
+
+        .mark.minute {
+            height: 8px;
+            background-color: #250fb2;
+        }
+
+        .number-12 { top: 5%; left: 50%; }
+        .number-1 { top: 11%; left: 74%; }
+        .number-2 { top: 27%; left: 89%; }
+        .number-3 { top: 50%; left: 94%; }
+        .number-4 { top: 75%; left: 88%; }
+        .number-5 { top: 89%; left: 72%; }
+        .number-6 { top: 96%; left: 50%; }
+        .number-7 { top: 88%; left: 28%; }
+        .number-8 { top: 74%; left: 14%; }
+        .number-9 { top: 50%; left: 6%; }
+        .number-10 { top: 28%; left: 12%; }
+        .number-11 { top: 11%; left: 29%; }
+
+        .country-time-menu {
+            position: relative;
+            width: 90%;
+            max-width: 600px;
+            max-height: 13%;
+            font-family: "Orbitron", sans-serif;
+            color: #fff;
+            background: linear-gradient(-115deg, #4b0082, #9370db);
+            padding: 10px 10px;
+            border: 5px solid #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            gap: 13px;
+            margin-bottom: 30px;
+        }
+
+        .country-time-menu select {
+            background-color: #000;
+            color: white;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            padding: 13px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .country-time-menu select:focus {
+            outline: none;
+        }
+
+        .country-time-display {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .digital-clock {
+            position: relative;
+            width: 85%;
+            max-width: 90%;
+            max-height: 13%;
+            font-family: "Orbitron", sans-serif;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 2vh;
+            background: linear-gradient(25deg, #9370db, #ffffff);
+            padding-top: 10px;
+            padding-bottom: 1px;
+            border: 5px solid #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .digital-clock span {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .digital-clock label {
+            font-size: 0.80rem;
+            margin-top: -2%;
+            font-weight: 800;
+            margin-bottom: -2.5%;
+            color: #4b0082;
+        }
+
+        #hours {
+            color: #000;
+            font-size: 0.80rem;
+        }
+
+        #minutes {
+            color: #250fb2;
+            font-size: 0.80rem;
+        }
+
+        #seconds {
+            color: #ff0000;
+            font-size: 0.80rem;
+        }
+
+        #theme-toggle {
+            position: absolute;
+            top: -35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 1px 15px;
+            border: 4.5px solid #fff;
+            border-radius: 7px;
+            background: #4b0082;
+            color: white;
+            font-size: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px -4px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+        }
+        
+        .footer-text {
+            position: fixed;
+            bottom: 0;
+            background-color: #4b0082;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 10px;
+            padding-top: 5px;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+            height: 25px;
+        }
+
+        .line-2 {
+
+width: 70%;
+height: 1px;
+background-color: #ffffff30;
+margin-top: 1%;
+margin-left: 15%;
+margin-bottom:8%;
+}
+
+.cont {
+color: #fff;
+font-size: 0.85rem;
+text-align: center;
+font-weight: 500;
+margin-top: -6%;
+left: 1%;
+}
+
+.bton {
+display: flex;
+align-items:center; 
+
+}
+.bton img {
+    max-width: 35px;
+    max-height: 35px;
+    background-color: #ffffff50;
+    border-radius: 50%;
+    box-shadow: 2px 1px 1px rgba(0,0,1,1);
+    margin: 10px;
+    margin-left: 32px;
+    object-fit: contain;/* Garde les proportions */
+    filter: brightness(2) invert(1); /* Effet blanc pour les icônes */
+   
+}
+        .yellow-bar {
+    background-color: #ffaa1c; /* Couleur de fond */
+    height: 38px; /* Hauteur de la barre */
+    width: 100%; /* Largeur pleine */
+    border-left: none;
+    border-right: none;
+    border-bottom: 5px solid #4b0082;
+    margin-bottom: -95px; /* Marges en bas */
+    margin-top: 13vh; /* Marges en haut */
+    display: flex; /* Utilisation de flexbox */
+    align-items: center; /* Centrer verticalement le contenu */
+    justify-content: center; /* Centrer horizontalement le contenu */
+    padding: 0;
+}
+
+.mode {
+            text-align: center;
+            font-weight: bold;
+            font-size: 90%;
+            color : black;
+            margin : 0;
+            
+               }
+               
+.marquee {
+    position: relative; /* Positionnement nécessaire pour l'animation */
+    width: 100%; /* Largeur pleine */
+    height: 100%; /* Occupe toute la hauteur de la barre */
+    overflow: hidden; /* Cache le contenu en dehors de la zone visible */
+    
+}
+
+.mode {
+    position: absolute; /* Nécessaire pour l'animation */
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    animation: scroll-text 14s linear infinite; /* Animation de défilement */
+    margin: 0; /* Supprime les marges par défaut */
+    font-size: 24px; /* Ajustez la taille du texte */
+    font-weight: bold; /* Texte en gras */
+    color: black; /* Couleur du texte */
+}
+
+.mode img {
+    vertical-align: middle; /* Aligne l'image avec le texte */
+    height: 50px; /* Ajustez la taille de l'image */
+    margin-left: 3px; /* Espace entre le texte et l'image */
+    background-color: #250fb2;
+    border-radius: 50%;
+}
+
+@keyframes scroll-text {
+    from {
+        transform: translateX(100%); /* Commence à droite */
+    }
+    to {
+        transform: translateX(-100%); /* Termine à gauche */
+    }
+}
+    </style>    

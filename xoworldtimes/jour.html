@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ,user-scalable=no">
+    <title>Signe Zodiaque</title>
+    <link rel="stylesheet" href="css/jour.css">
+</head>
+
+<header>
+    <h1>XO World Times</h1>
+      <p>Le monde en temps réel, à portée de main.</p>
+      <div class="burger-menu" onclick="toggleMenu()">☰</div>
+      <div id="menu" class="menu">
+          <ul>
+            <li><a href="index.html">Acceuil</a></li>
+              <li><a href="propos.html">À propos</a></li>
+  
+          </ul>
+                  <div class="line-2"></div>
+          <p class="cont">Tous droits réservés</p>
+      </div>
+  </header>
+<body>
+    <div id="landscape-warning">
+    Pour une meilleure expérience, veuillez basculer le mode de votre appareil en portrait.
+</div>
+
+    <h2>Quel est votre signe du zodiaque ?</h2>
+          
+    <label for="mois">• Choisissez le mois :</label>
+        <select id="mois">
+        <option value="1">Janvier</option>
+        <option value="2">Février</option>
+        <option value="3">Mars</option>
+        <option value="4">Avril</option>
+        <option value="5">Mai</option>
+        <option value="6">Juin</option>
+        <option value="7">Juillet</option>
+        <option value="8">Août</option>
+        <option value="9">Septembre</option>
+        <option value="10">Octobre</option>
+        <option value="11">Novembre</option>
+        <option value="12">Décembre</option>
+    </select>
+
+    <label for="jour">• Choisissez le jour :</label>
+    <select id="jour">
+        <!-- Jour de 1 à 31 -->
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+        <option value="31">31</option>
+    </select>
+            
+<button onclick="trouverSigneEtCelebrites()">Voir mon signe</button>
+<p id="resultat"></p>
+
+<!-- Container pour afficher le signe et ses caractéristiques -->
+<div id="signeDetails" style="display: none;">
+    <p id="signeNom"></p>
+    <p id="caracteristiques"></p>
+</div>
+     <div class="footer-text">
+        <span>© 2025 XO World Times - Tous droits réservés.</span>
+    </div>
+     <script src="js/jour.js"></script>
+    </body>
+    </html>
