@@ -1,6 +1,6 @@
 {
   "name": "XO World Times",
-  "short_name": "Xowordtimes",
+  "short_name": "Xoworldtimes",
   "description": "Votre application XO World Times",
   "start_url": "/",
   "display": "standalone",
