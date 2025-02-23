@@ -71,6 +71,7 @@ function toggleMenu(event) {
             
             document.getElementById("zodiac-sign").innerHTML = `
                 <p>${zodiacSigns[month][0]}</p>
+                <p> <br> </p>
                 <p>${zodiacSigns[month][1]}</p>
             `;
         }
