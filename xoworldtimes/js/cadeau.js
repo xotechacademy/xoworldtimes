@@ -1,9 +1,9 @@
 function toggleMenu(event) {
         document.getElementById('menu').classList.toggle('open');
-        event.stopPropagation(); // Empêche la propagation de l'événement vers le document
+        event.stopPropagation(); 
     }
 
-    // Ferme le menu si on clique en dehors
+    
     document.addEventListener('click', function(event) {
         var menu = document.getElementById('menu');
         var burgerMenu = document.querySelector('.burger-menu');
@@ -26,6 +26,21 @@ function toggleMenu(event) {
             { name: "Verseau", dates: "20 janvier - 18 février", symbol: "♒" },
             { name: "Poissons", dates: "19 février - 20 mars", symbol: "♓" }
         ];
+        
+        document.addEventListener("DOMContentLoaded", function () {
+    let modal = document.getElementById("quizModal");
+    let startBtn = document.getElementById("startQuizBtn");
+
+    
+    modal.style.display = "flex";
+
+    
+    startBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+        startTimer();
+        loadQuestion();
+    });
+});
 
         function getRandomElement(arr) {
             return arr[Math.floor(Math.random() * arr.length)];
@@ -64,7 +79,7 @@ function toggleMenu(event) {
         let score = 0;
         let timer = 20;
         let timerInterval;
-
+        
         function startTimer() {
             timerInterval = setInterval(() => {
                 timer--;
@@ -131,5 +146,4 @@ resultContainer.innerHTML = resultText;
     }
 }
 
-startTimer();
 loadQuestion();
