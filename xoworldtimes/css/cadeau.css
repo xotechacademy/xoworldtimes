@@ -1,21 +1,21 @@
             @font-face {
     font-family: 'Poppins';
     src: url('media/Poppins-SemiBold.ttf') format('truetype');
-    font-weight: 200; /* SemiBold */
+    font-weight: 200;
     font-style: normal;
     }
     
     @font-face {
     font-family: 'Poppins';
     src: url('media/Poppins-Medium.ttf') format('truetype');
-    font-weight: 400; /* SemiBold */
+    font-weight: 400;
     font-style: normal;
     }
 
     @font-face {
     font-family: 'Poppins';
     src: url('media/Poppins-Lightitalic.ttf') format('truetype');
-    font-weight: 400; /* Light */
+    font-weight: 400;
     font-style: italic;
     };
     }
@@ -82,8 +82,8 @@
         height: 100%;
         background-color: #4b008290;
         font-weight: bold;
-        backdrop-filter: blur(10px); /* Applique un flou de 10 pixels */
-        -webkit-backdrop-filter: blur(5px); /* Compatibilité avec Safari */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(5px);
         transition: right 0.3s ease;
     }
 
@@ -155,9 +155,52 @@ align-items:center;
     box-shadow: 2px 1px 1px rgba(0,0,1,1);
     margin: 10px;
     margin-left: 32px;
-    object-fit: contain;/* Garde les proportions */
-    filter: brightness(2) invert(1); /* Effet blanc pour les icônes */
+    object-fit: contain;
+    filter: brightness(2) invert(1);
    
+}
+
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+
+.modal-content {
+  background: white;
+  padding: 10px;
+  color: black;
+  border-radius: 10px;
+  text-align: center;
+  height: 310px;
+  max-width: 290px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+#startQuizBtn {
+  margin-top : 5px;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  background: #4b0082;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#startQuizBtn:hover {
+  background: #0056b3;
 }
         
         .game-container {
