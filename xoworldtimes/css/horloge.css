@@ -169,7 +169,7 @@
             max-height: 270px;
             border: 22px solid #4b0082;
             border-radius: 50%;
-            background-image: url('../media/tiwon.png');
+            background-image: url('tiwon.png');
             box-shadow: 0 2px 15px rgba(0, 0, 0, 1);
             margin-bottom: 6vh; 
             background-color: #ffaa1c35;
